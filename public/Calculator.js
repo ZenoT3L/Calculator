@@ -69,14 +69,31 @@ function empty() {
   console.log(num1 + " " + num2 + " " + inner);
 }
 
+function bgcolor(object, color, oldcolor) {
+  object.style.backgroundColor = color;
+  setTimeout(() => {
+    object.style.backgroundColor = oldcolor;
+  }, 100);
+}
+
+function buttonColor() {
+  button.forEach((element) => {
+    //Click event
+    element.addEventListener("click", () => {
+      bgcolor(element, "#636161", "white");
+    });
+  });
+}
+
 //Functions
 
 // Calculator Variables
 
-let clear = document.querySelector(".clear");
-let output = document.querySelector(".output");
 let num = document.querySelectorAll(".number");
 let oper = document.querySelectorAll(".oper");
+let button = document.querySelectorAll(".button");
+let clear = document.querySelector(".clear");
+let output = document.querySelector(".output");
 let cal = document.querySelector(".cal");
 let operands = ["+", "-", "*", "/"];
 let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -85,6 +102,8 @@ let num2;
 let inner;
 
 //calculator variables
+
+buttonColor();
 
 // foreach loops for the variables
 
@@ -99,6 +118,7 @@ num.forEach((element) => {
 oper.forEach((element) => {
   //Click event
   element.addEventListener("click", () => {
+    bgcolor(element, "#6e5b06", "#fccf0a");
     let value = element.innerHTML;
     operand(value);
   });
